@@ -1,0 +1,252 @@
+.section{
+    &--discount,
+    &--technology{
+        background-color: $white;
+        padding: 67px 0;
+        .headline{
+            margin-bottom: 52px;
+            &__title{
+                font-size: 32px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+                color: #1A36A8;
+                @media (max-width: 768px){
+                    font-size: 24px;
+                }
+                &::after{
+                    content: '';
+                    background-image: url('images/linea-grande.png');
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    max-width: 280px;
+                    height: 20px;
+                    display: block;
+                    margin: 0 auto;   
+                }
+            }
+            &__description{
+                color: #595959;
+                text-align: center;
+                //font-family: Open Sans;
+                font-size: 24px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+                @media (max-width: 768px){
+                    font-size: 20px;
+                }
+            }
+        }        
+    }
+    &--intro {
+        padding-top: 160px;
+        padding-bottom: 77px;
+        .c-ads{
+            max-width: 550px;
+            &__header{
+                margin-bottom: 44px;
+                .headline__title {
+                    max-width: 358px;
+                }
+            }   
+            &__icono{
+                display: flex;
+                align-items: center;
+                margin-bottom: 14px;
+                span{
+                    margin-left: 16px;
+                    font-size: 24px;
+                    color: $white;
+                }
+            }
+            &__content{
+                padding: 13px 16px;
+                background-color: $white;
+            }
+            &__inner{
+                border-radius: 15px;
+                border: 2px dashed#003383;
+                padding: 18px 26px;
+                position: relative;
+                &::after{
+                    content: '';
+                    background-image: url('images/tijera.png');
+                    position: absolute;
+                    width: 24px;
+                    height: 24px;
+                    right: -13px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+            } 
+            &__title{
+                color: #DB0FA8;
+                font-size: 32px;
+                text-align: center;
+                margin-bottom: 12px;
+                &:after {
+                    content: '';
+                    background-image: url('images/linea-roja.png');
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    max-width: 280px;
+                    height: 20px;
+                    display: block;
+                    margin: 0 auto;
+                }
+            }
+            &__coupon{
+                display: flex;
+                margin-bottom: 23px;
+                align-items: center;
+                justify-content: center;
+                @media (max-width: 480px){
+                    flex-direction: column;
+                }
+            }
+            &__coupon-image{
+
+            }
+            &__coupon-text{
+                font-size: 24px;
+                color: $blue;
+                font-weight: 600;
+                span.text-pink {
+                    color: #DB0FA8;
+                }
+            }
+            &__description{
+                text-align: center;
+                font-size: 14px;
+                color: $blue;
+            }
+        }
+    }
+    &--discount{
+        background-color: $white;
+        padding: 67px 0;
+        .steps{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            &__title{
+                margin-bottom: 18px;
+                color: #1A36A8;
+                font-size: 32px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;                
+                @media (max-width: 768px){
+                    font-size: 22px;
+                }
+            }
+            &__circle{
+                width: 244px;
+                height: 244px;
+                border-radius: 100%;
+                background-color: #BBBBBB;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 39px;
+            }
+            &__circle-inner{
+                width: 230px;
+                height: 230px;
+                border-radius: 100%;
+                background-color: #1A36A8;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            &__description{
+                text-align: center;
+                max-width: 362px;
+                h3{
+                    //font-family: 'Open Sans';
+                    font-size: 32px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: normal;
+                    margin-bottom: 26px;
+                    color: #1A36A8;
+                    @media (max-width: 768px){
+                        font-size: 22px;
+                    }
+                }
+                p{
+                    color: #595959;
+                    //font-family: Open Sans;
+                    font-size: 18px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: normal;
+                }
+            }
+
+        }
+    }
+    &--technology{
+        padding-bottom: 0;
+        @media (max-width: 1100px){
+            padding-bottom: 67px;
+        } 
+        .blue-icon{
+            margin: 30px auto 45px;
+        }
+    }
+}
+
+.line-break{
+    display: block;
+}
+
+.bg-image {
+    position: relative;
+    &::after{
+        content: '';
+        background-image: url('images/linea.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        max-width: 247px;
+        width: 100%;
+        height: 21px;
+        margin: 0 auto;
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        @media (max-width: 480px){
+            bottom: -17px;
+        }
+    }
+}
+
+.ribbon{
+    display: flex;
+    max-width: 1227px;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 48px;
+    &__line{
+        max-width: 500px;
+        height: 2px;
+        background-color: #1A36A8;
+        width: 100%;
+        margin: 0 15px;
+    }
+    &__image{
+        background-image: url('images/icono-seccion.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        max-width: 104px;
+        width: 100%;
+        height: 40px;        
+    }
+}
+
+.text-orange{
+    color: #D43E36;
+}

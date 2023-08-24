@@ -1,0 +1,115 @@
+.c-slider{
+    position: relative;
+    &__item{
+        display: flex;
+        @media (max-width: 1100px){
+            flex-direction: column;
+        }
+    }
+    &__content{
+        padding-left: 150px;
+        padding-right: 150px;
+        @media (max-width: 1024px){
+            padding-left: 50px;
+            padding-right: 50px;
+        }
+        @media (max-width: 1100px){
+            order: 2;
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+    }
+    &__star {
+        background-image: url('images/estrellas.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 64px;
+        height: 64px;
+        margin-bottom: 21px;
+    }
+    &__title {
+        color: $orange;
+        margin-bottom: 21px;
+    }
+    &__description{
+        color: #2E2E2E;
+        //font-family: Open Sans;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        margin-bottom: 21px;
+    }
+    &__image{
+        max-width: 640px;
+        width: 100%;
+        @media (max-width: 1100px){
+            order: 1;
+            max-width: 100%;
+        }
+        img{
+            @media (max-width: 1100px){
+                margin: 0 auto;
+            }   
+        }
+    }
+    .swiper-pagination-bullet {
+        width: 15px;
+        height: 15px;
+        background-color: #1A36A8;
+    }
+    .swiper-button-prev {
+        left: 32px;
+    }
+    .swiper-button-next{
+        right: 32px;
+        &:hover{
+            color: $white;
+            @media (max-width: 1100px){
+                color: $gray;
+            } 
+        }
+    }
+    .swiper-button-prev, .swiper-button-next{
+        top: 50%;
+        transform: translateY(-50%);
+        color: $gray;
+        transition: all 0.5s;
+    }
+    &__custom-pagination{
+        padding-left: 150px;
+        &.swiper-pagination-bullets.swiper-pagination-horizontal{
+            position: absolute;
+            z-index: 100;
+            bottom: 70px;
+            @media (max-width: 1366px){
+                bottom: 10px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: auto;
+            }  
+            @media (max-width: 1100px){
+                position: relative;
+                bottom: initial;
+                left: initial;
+                transform: none;
+                text-align: center;
+                padding-left: 0;
+            } 
+        }
+        @media (max-width: 1100px){
+            position: relative;
+        }   
+    }
+    &--discount{
+
+        .swiper-button-prev, .swiper-button-next{
+            color: $blue;
+        }    
+        .swiper-button-next{
+            &:hover{
+                color: $blue;
+            }
+        }    
+    }
+}
