@@ -1,0 +1,42 @@
+.logo {
+
+}
+
+.main-header {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    z-index: 200;
+    &__inner{
+        display: flex;
+        justify-content: space-between;
+    }
+    &__inner-right{
+        display: flex;
+        align-items: center;
+    }
+    &__text{
+        font-family: BR Sonoma;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 16px; /* 133.333% */
+        letter-spacing: 0.2px;
+    }
+    &__contact{
+        display: flex;
+        margin-left: 16px;
+        align-items: center;
+        &::before{
+            content: '';
+            background-image: url('images/phone.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 20px;
+            height: 20px;
+            display: block;
+            margin-right: 8px;
+        }
+    }
+}

@@ -1,0 +1,25 @@
+.headline{
+    &__title{
+      font-family: BR Sonoma;
+      font-size: 32px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 40px;
+      @media (max-width: 480px){
+        font-size: 42px;
+      }
+    }
+    &__subtitle{
+      font-weight: bold;
+      font-size: 20px;
+      text-transform: uppercase;
+    }
+    &__description{
+      font-family: BR Sonoma;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 20px; /* 142.857% */
+      letter-spacing: 0.2px;
+    }
+  }

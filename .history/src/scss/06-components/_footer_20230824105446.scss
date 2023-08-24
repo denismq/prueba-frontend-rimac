@@ -1,0 +1,18 @@
+.main-footer{
+    background-color: $black;
+    padding: 32px 0;
+    &__inner{
+        display: flex;
+        justify-content: space-between;
+    }
+    &__inner-right{
+        p{
+            font-family: BR Sonoma;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 16px;
+            color: $white;
+        }
+    }
+}

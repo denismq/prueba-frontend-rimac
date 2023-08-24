@@ -1,0 +1,21 @@
+.headline{
+    &__title{
+      font-weight: bold;
+      font-size: 54px;
+      margin-bottom: 44px;
+      @media (max-width: 480px){
+        font-size: 42px;
+      }
+    }
+    &__subtitle{
+      font-weight: bold;
+      font-size: 20px;
+      text-transform: uppercase;
+    }
+    &__description{
+      color: $white;
+      font-size: 28px;
+      font-weight: 600;
+      
+    }
+  }

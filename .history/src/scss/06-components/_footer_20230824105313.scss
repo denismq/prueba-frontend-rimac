@@ -1,0 +1,8 @@
+.main-footer{
+    background-color: $black;
+    padding: 32px 0;
+    &__inner{
+        display: flex;
+        justify-content: space-between;
+    }
+}
