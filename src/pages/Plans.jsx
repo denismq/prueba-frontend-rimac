@@ -1,6 +1,63 @@
-import React from 'react'
+import React, { useState, useEffect} from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { getPlans } from '../redux/actions/planActions';
+
+const planOptions = [
+    { 
+        label: "Para mi", 
+        content: "Cotiza tu seguro de salud y agrega familiares si así lo deseas.", 
+        image: "images/icono-para-mi.svg",
+    },
+    { 
+        label: "Para alguien más", 
+        content: "Realiza una cotización para uno de tus familiares o cualquier persona.", 
+        image: "images/icon-alguien-mas.svg"
+    },
+  ];
 
 const Plans = () => {
+
+    const dispatch = useDispatch();
+    const [activePlan, setActivePlan] = useState(null);
+    
+
+
+    const navigate = useNavigate();
+
+    const user = useSelector((state) => state.user);
+    const {userName, userLastName, userBirthday} = user;
+    const plan = useSelector((state) => state.plan);
+    const {list} = plan;
+    //console.log('lista', list)
+    //console.log('cumpleaños', userBirthday)
+
+    var today = new Date();
+    var birthDate = new Date(userBirthday);
+    var currentAge = today.getFullYear() - birthDate.getFullYear();
+
+    
+    var planFilter = list.filter(function (list) {
+        return list.age >= currentAge;
+    });
+    console.log(planFilter);
+
+
+    const handlePlanClick = (index) => {
+        setActivePlan(index);
+    };
+
+    const getUserPlan = () => {
+        dispatch(getPlans())
+      };
+
+    useEffect(() => {
+    
+        getUserPlan();
+        //console.log(list);
+    }, []);
+
   return (
     <section className='section section--plan'>
         <div className="content-steps">
@@ -19,84 +76,87 @@ const Plans = () => {
             </ul>
         </div>
         <div className="plans">
+            <div className="back">
+                <Link to={'/'}>
+                    <div className="back__icon">
+
+                    </div>
+                    <p className="back__text">Volver</p>
+                </Link>
+            </div>
             <header className="headline">
                 <h1 className="headline__title">
-                    Rocío ¿Para quién deseas cotizar?
+                    {userName} {userLastName} ¿Para quién deseas cotizar?
                 </h1>
                 <p className="headline__description">
                     Selecciona la opción que se ajuste más a tus necesidades
                 </p>
             </header>
             <div className="plans__options">
-                <div className="plans__option">
-                    <input type="radio" id="for-me" name="plan"/>
-                    <label htmlFor='for-me' className="plans__option-content">
-                        <div className="wrapper-shape">
-                            <div className="shape"></div>
+                {
+                    planOptions.map((plan, index) => (
+                        <div  
+                            key={index} 
+                            onClick={() => handlePlanClick(index)}
+                            className={`plans__option ${activePlan === index ? "active" : ""}`}    
+                        >
+                            <input type="radio" id={`plan-${index}`} name="plan"/>
+                            <label htmlFor={`plan-${index}`} className="plans__option-content">
+                                <div className="wrapper-shape">
+                                    <div className="shape"></div>
+                                </div>
+                                <div className="plans__option-icon">
+                                    <img src={plan.image} alt="imagen plan"/>
+                                </div>
+                                <h2 className="plans__option-title">{plan.label}</h2>
+                                <p className="plans__option-text">
+                                    {plan.content}
+                                </p>
+                            </label>                
                         </div>
-                        <div className="plans__option-icon">
-                            <img src="images/icono-para-mi.svg" alt="" className=''/>
-                        </div>
-                        <h2 className="plans__option-title">Para mi</h2>
-                        <p className="plans__option-text">
-                            Cotiza tu seguro de salud y agrega familiares si así lo deseas.
-                        </p>
-                    </label>                
-                </div>
-                <div className="plans__option">
-                    <input type="radio" id="for-someone-else"  name="plan" />
-                    <label htmlFor='for-someone-else' className="plans__option-content">
-                        <div className="wrapper-shape">
-                            <div className="shape"></div>
-                        </div>
-                        <div className="plans__option-icon">
-                            <img src="images/icono-para-mi.svg" alt="" className=''/>
-                        </div>
-                        <h2 className="plans__option-title">Para alguien más</h2>
-                        <p className="plans__option-text">
-                            Cotiza tu seguro de salud y agrega familiares si así lo deseas.
-                        </p>
-                    </label>                
-                </div>
+                    ))
+                }
             </div>
             <div className="plans__detail">
-                <div className="plan">
-                    <div className="plan__header">
-                        <div className="plan__title">
-                            <h3>Plan en Casa</h3>
-                            <div className="plan__cost">
-                                <p className='plan__cost-text'>COSTO DEL PLAN</p>
-                                <p className='plan__cost-price'>$39 al mes</p>
+                {
+                    planFilter.map((plan, index) => (
+                        <div className="plan" key={index}>
+                            <div className="plan__header">
+                                <div className="plan__title">
+                                    <h3>{plan.name}</h3>
+                                    <div className="plan__cost">
+                                        <p className='plan__cost-text'>COSTO DEL PLAN</p>
+                                        <p className='plan__cost-price'>{`$${plan.price}`} al mes</p>
+                                    </div>
+                                </div>
+                                <div className="plan__icon">
+                                    <img src="images/icono-plan-casa.svg" alt="" className=''/>
+                                </div>
+                                
+                            </div>
+                            <div className="plan__content">
+                                <ul>
+                                    {
+                                        plan.description.map((description, index) => (
+                                            <li className='plan-list__item' key={index}>
+                                                <span>
+                                                    {description}
+                                                </span>
+                                            </li>
+                    
+                                        ))
+                                    }
+
+                                </ul>
+                            </div>
+                            <div className="plan__footer">
+                                <button type="submit" className="c-button c-button--red">Seleccionar Plan</button>
                             </div>
                         </div>
-                        <div className="plan__icon">
-                            <img src="images/icono-plan-casa.svg" alt="" className=''/>
-                        </div>
-                        
-                    </div>
-                    <div className="plan__content">
-                        <ul className='plan-list'>
-                            <li className='plan-list__item'>
-                                <span>
-                                    Medico general a domicilio
-                                    por S/20 y medicinas cubiertas al 100%
-                                </span>
-                            </li>
-                            <li className='plan-list__item'>
-                                Videoconsulta y orientación telefónica al 100% 
-                                en medicina general + pediatría.
-                            </li>
-                            <li className='plan-list__item'>
-                                Indemnización de S/300 en caso de hospitalización 
-                                por más de un día.
-                            </li>
-                        </ul>
-                    </div>
-                    <div className="plan__footer">
-                        <button type="submit" className="c-button c-button--red">Seleccionar Plan</button>
-                    </div>
-                </div>
-                <div className="plan">
+
+                    ))
+                }
+                {/*<div className="plan">
                     <div className="plan__header">
                         <div className="plan__title">
                             <h3>Plan en Casa y Clínica</h3>
@@ -129,7 +189,8 @@ const Plans = () => {
                         <button type="submit" className="c-button c-button--red">Seleccionar Plan</button>
                     </div>
                 </div>
-                <div className="plan">
+                */}
+                {/*<div className="plan">
                     <div className="plan__header">
                         <div className="plan__title">
                             <h3>Plan en Casa + Chequeo</h3>
@@ -162,6 +223,7 @@ const Plans = () => {
                         <button type="submit" className="c-button c-button--red">Seleccionar Plan</button>
                     </div>
                 </div>
+                */}
             </div>
         </div>
     </section>

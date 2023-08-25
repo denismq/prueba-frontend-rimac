@@ -10,13 +10,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@redux-devtools/extension": "^3.2.5",
+    "axios": "^1.4.0",
     "bootstrap": "^5.3.1",
     "dart-sass": "^1.25.0",
     "node-sass": "^9.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.45.4",
+    "react-redux": "^8.1.2",
     "react-router-dom": "^6.15.0",
+    "redux-thunk": "^2.4.2",
     "sass": "^1.65.1",
     "swiper": "^10.1.0"
   },

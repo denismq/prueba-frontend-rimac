@@ -5,6 +5,8 @@ import Input from '../Input';
 import Select from '../Select';
 import Control from '../Control';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUser } from '../../redux/actions/userActions';
 
 const documents = [
   { label: 'DNI', value: 'dni' },
@@ -31,8 +33,11 @@ const Form = () => {
 
   const [isCheckedPrivacy, setIsCheckedPrivacy] = useState(true);
   const [isCheckedCC, setIsCheckedCC] = useState(true);
+  const user = useSelector((state) => state.user);
+  const {states} = user;
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const {
     handleSubmit,
@@ -45,8 +50,16 @@ const Form = () => {
 
   const onSubmit = (data) => {
       console.log(data);
-      navigate('/plans');
+      //navigate('/plans');
+      dispatch(getUser(data.document_number, data.cellphone))
   }
+
+  useEffect(() => {
+    if (states.success) {
+      navigate('/plans');
+    }
+  }, [states])
+  
 
   const Error = ({ children }) => <p style={{ color: 'red', fontSize: '14px' }}>{children}</p>; 
 
@@ -206,8 +219,15 @@ const Form = () => {
             </div>
             <div className="col-md-12">
               <div className="c-form__row">
-                <button type='submit' className='c-button' disabled={isSubmitting}>
-                    Cotiza aquí
+                <button type='submit' className='c-button' disabled={states.loading}>
+                {states.loading ? (
+                  <>
+                    Cargando...
+                    <span className='spinner-border spinner-border-sm ms-2'></span>
+                  </>
+                ) : (
+                  'Cotiza Aquí'
+                )}
                 </button>
               </div>
             </div>                        
