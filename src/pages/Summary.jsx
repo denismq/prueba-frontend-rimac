@@ -1,5 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const Summary = () => {
 
@@ -26,6 +27,14 @@ const Summary = () => {
             </ul>
         </div>        
         <div className="plans">
+            <div className="back">
+                <Link to={'/plans'}>
+                    <div className="back__icon">
+
+                    </div>
+                    <p className="back__text">Volver</p>
+                </Link>
+            </div>            
             <header className="headline">
                 <h1 className="headline__title">
                     Resumen del seguro
