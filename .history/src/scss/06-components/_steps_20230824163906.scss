@@ -1,0 +1,16 @@
+.steps{
+    display: flex;
+    justify-content: center;
+    &__item{
+        display: flex;;
+    }
+    &__number{
+        width: 24px;
+        height: 24px;
+        background-color: #4F4FFF;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+    }
+}

@@ -1,0 +1,11 @@
+.steps{
+    display: flex;
+    justify-content: center;
+    &__item{
+
+    }
+    &__number{
+        width: 24px;
+        height: 24px;
+    }
+}

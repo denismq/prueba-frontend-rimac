@@ -1,0 +1,29 @@
+.steps{
+    display: flex;
+    justify-content: center;
+    &__item{
+        display: flex;;
+    }
+    &__number{
+        width: 24px;
+        height: 24px;
+        background-color: #4F4FFF;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        color: $white;
+        font-family: Lato;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 700;
+        margin-right: 16px;
+    }
+    &__dots{
+        border-top: 5px dotted black;
+        width: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

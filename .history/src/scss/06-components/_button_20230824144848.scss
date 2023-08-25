@@ -1,0 +1,21 @@
+.c-button{
+    /*width: 240px;
+    height: 56px;
+    background-color: #E3E3E3;
+    */
+    display: flex;
+    padding: 20px 40px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    background-color: $black;
+    color: $white;
+    &--blue{
+        background-color: $bg-color;
+        color: $white;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;        
+    }
+}
