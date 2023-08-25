@@ -61,7 +61,7 @@ const Form = () => {
   }, [states])
   
 
-  const Error = ({ children }) => <p style={{ color: 'red', fontSize: '14px' }}>{children}</p>; 
+  const Error = ({ children }) => <p style={{ color: 'red', fontSize: '14px', fontFamily: 'Lato' }}>{children}</p>; 
 
   return (
     <div className='c-form'>
@@ -113,7 +113,7 @@ const Form = () => {
                       <Input
                           type='text'
                           name='document_number'
-                          className={`form-control ${
+                          className={`form-control no-border-radius ${
                           errors['document_number'] ? 'is-invalid' : ''
                           }`}
                           value={value}

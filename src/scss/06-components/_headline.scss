@@ -6,9 +6,6 @@
       font-weight: 700;
       line-height: 40px;
       color: $black;
-      @media (max-width: 480px){
-        font-size: 42px;
-      }
     }
     &__subtitle{
       font-weight: bold;
