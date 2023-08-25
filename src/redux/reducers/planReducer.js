@@ -1,7 +1,9 @@
-import { PLAN, PLAN_SUCCESS, PLAN_FAILURE } from '../types';
+import { PLAN, PLAN_SUCCESS, PLAN_FAILURE, GET_SELECTED_PLAN } from '../types';
 
 const initialState = {
   list: [],
+  plan: '',
+  price: '',
   states: {
     loading: false,
     success: false,
@@ -44,6 +46,19 @@ const planReducer = (state = initialState, action) => {
           error: true,
         },
       };
+    case GET_SELECTED_PLAN: {
+      const { plan, price } = action.payload;
+      return {
+        ...state,
+        plan,
+        price,
+        states: {
+          loading: false,
+          success: true,
+          error: false,
+        },
+      };
+    }
     default:
       return state;
   }

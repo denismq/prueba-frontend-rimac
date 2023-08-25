@@ -2,14 +2,13 @@ import React, { useState, useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { getPlans } from '../redux/actions/planActions';
+import { getPlans, getSelectedPlan } from '../redux/actions/planActions';
 
-/*const planOptions = [
+const planOptions = [
     { 
         label: "Para mi", 
         content: "Cotiza tu seguro de salud y agrega familiares si así lo deseas.", 
         image: "images/icono-para-mi.svg",
-        plan:
     },
     { 
         label: "Para alguien más", 
@@ -17,27 +16,12 @@ import { getPlans } from '../redux/actions/planActions';
         image: "images/icon-alguien-mas.svg"
     },
   ];
-*/
 
-const descuento = [
-    {
-        price: 39
-    },
-    {
-        price: 99
-    },
-    {
-        price: 49
-    },
 
-]
 const Plans = () => {
 
     const dispatch = useDispatch();
-    const [activePlan, setActivePlan] = useState('');
-    //const [filterPlan, setFilterPlan] = useState('');
-    
-
+    const [activePlan, setActivePlan] = useState(null);
 
     const navigate = useNavigate();
 
@@ -45,12 +29,10 @@ const Plans = () => {
     const {userName, userLastName, userBirthday} = user;
     const plan = useSelector((state) => state.plan);
     const {list} = plan;
-    //console.log('lista', list)
-    //console.log('cumpleaños', userBirthday)
 
-    var today = new Date();
-    var birthDate = new Date(userBirthday);
-    var currentAge = today.getFullYear() - birthDate.getFullYear();
+    const today = new Date();
+    const birthDate = new Date(userBirthday);
+    const currentAge = today.getFullYear() - birthDate.getFullYear();
 
     
     var planFilter = list.filter(function (list) {
@@ -58,34 +40,17 @@ const Plans = () => {
     });
     console.log(planFilter);
 
-    var planFilterDescuento = list.filter(function (list) {
+    /*var planFilterDescuento = list.filter(function (list) {
         const descuento = list.price * 0.05
         const total = list.price - descuento;
         return total;
     });
 
-    console.log('descuento', planFilterDescuento)
+    console.log('descuento', planFilterDescuento)*/
 
-    const planOptions = [
-        { 
-            label: "Para mi", 
-            content: "Cotiza tu seguro de salud y agrega familiares si así lo deseas.", 
-            image: "images/icono-para-mi.svg",
-            plan: planFilter
-        },
-        { 
-            label: "Para alguien más", 
-            content: "Realiza una cotización para uno de tus familiares o cualquier persona.", 
-            image: "images/icon-alguien-mas.svg",
-            plan: planFilterDescuento
-        },
-      ];
-
-    console.log(planOptions);
     const handlePlanClick = (index) => {
         setActivePlan(index);
-        console.log('index plan', index);
-        //setFilterPlan(index)
+        //console.log('index plan', index);
     };
 
     const getUserPlan = () => {
@@ -95,6 +60,16 @@ const Plans = () => {
     useEffect(() => {
         getUserPlan();
     }, []);
+
+    const getSelectedPlanOption = (plan, price, activePlan) => {
+        //debugger
+        if (activePlan === 1) {
+            const price_discount = Math.abs((price * 0.05) - price)
+            dispatch(getSelectedPlan(plan, price_discount))
+        }else {
+            dispatch(getSelectedPlan(plan, price))
+        }
+    }
 
   return (
     <section className='section section--plan'>
@@ -155,115 +130,49 @@ const Plans = () => {
                     ))
                 }
             </div>
+            
             <div className="plans__detail">
                 {
-                   planFilter.map((plan, index) => {
-                            return (
-                                <div className="plan" key={index}>
-                                    <div className="plan__header">
-                                        <div className="plan__title">
-                                            <h3>{plan.name}</h3>
-                                            <div className="plan__cost">
-                                                <p className='plan__cost-text'>COSTO DEL PLAN</p>
-                                                <p className='plan__cost-price'>{`$${plan.price}`} al mes</p>
-                                            </div>
-                                        </div>
-                                        <div className="plan__icon">
-                                            <img src="images/icono-plan-casa.svg" alt="" className=''/>
-                                        </div>
-                                        
-                                    </div>
-                                    <div className="plan__content">
-                                        <ul>
-                                            {
-                                                plan.description.map((description, index) => (
-                                                    <li className='plan-list__item' key={index}>
-                                                        <span>
-                                                            {description}
-                                                        </span>
-                                                    </li>
-                            
-                                                ))
-                                            }
-
-                                        </ul>
-                                    </div>
-                                    <div className="plan__footer">
-                                        <button type="submit" className="c-button c-button--red">Seleccionar Plan</button>
+                  activePlan !== null && planFilter.map((plan, index) => {
+                    return (
+                        <div className="plan" key={index}>
+                            <div className="plan__header">
+                                <div className="plan__title">
+                                    <h3>{plan.name}</h3>
+                                    <div className="plan__cost">
+                                        <p className='plan__cost-text'>COSTO DEL PLAN</p>
+                                        <p className='plan__cost-price'>
+                                            {`$ ${activePlan === 1 ? Math.abs((plan.price * 0.05) - plan.price) : plan.price} `} 
+                                            al mes
+                                        </p>
                                     </div>
                                 </div>
-                            )
+                                <div className="plan__icon">
+                                    <img src="images/icono-plan-casa.svg" alt="" className=''/>
+                                </div>
+                            </div>
+                            <div className="plan__content">
+                                <ul>
+                                    {
+                                        plan.description.map((description, index) => (
+                                            <li className='plan-list__item' key={index}>
+                                                <span>
+                                                    {description}
+                                                </span>
+                                            </li>
+                    
+                                        ))
+                                    }
+                                </ul>
+                            </div>
+                            <div className="plan__footer">
+                                <button type="submit" className="c-button c-button--red" onClick={() => getSelectedPlanOption(plan.name, plan.price, activePlan)}>Seleccionar Plan</button>
+                            </div>
+                        </div>
+                    )
 
                     })
                 }
-                {/*<div className="plan">
-                    <div className="plan__header">
-                        <div className="plan__title">
-                            <h3>Plan en Casa y Clínica</h3>
-                            <div className="plan__cost">
-                                <p className='plan__cost-text'>COSTO DEL PLAN</p>
-                                <p className='plan__cost-price'>$39 al mes</p>
-                            </div>
-                        </div>
-                        <div className="plan__icon">
-                            <img src="images/icono-plan-casa-clinica.svg" alt="" className=''/>
-                        </div>
-                        
-                    </div>
-                    <div className="plan__content">
-                        <ul className='plan-list'>
-                            <li className='plan-list__item'>
-                                <span>
-                                    Consultas en clínica para cualquier especialidad. 
-                                </span>
-                            </li>
-                            <li className='plan-list__item'>
-                                Medicinas y exámenes derivados cubiertos al 80%
-                            </li>
-                            <li className='plan-list__item'>
-                                Atención médica en más de 200 clínicas del país.
-                            </li>
-                        </ul>
-                    </div>
-                    <div className="plan__footer">
-                        <button type="submit" className="c-button c-button--red">Seleccionar Plan</button>
-                    </div>
-                </div>
-                */}
-                {/*<div className="plan">
-                    <div className="plan__header">
-                        <div className="plan__title">
-                            <h3>Plan en Casa + Chequeo</h3>
-                            <div className="plan__cost">
-                                <p className='plan__cost-text'>COSTO DEL PLAN</p>
-                                <p className='plan__cost-price'>$39 al mes</p>
-                            </div>
-                        </div>
-                        <div className="plan__icon">
-                            <img src="images/icono-plan-casa-chequeo.svg" alt="" className=''/>
-                        </div>
-                        
-                    </div>
-                    <div className="plan__content">
-                        <ul className='plan-list'>
-                            <li className='plan-list__item'>
-                                <span>
-                                    Un Chequeo preventivo general de manera presencial o virtual.
-                                </span>
-                            </li>
-                            <li className='plan-list__item'>
-                                Acceso a Vacunas en el Programa del MINSA en centros privados. 
-                            </li>
-                            <li className='plan-list__item'>
-                                Incluye todos los beneficios del Plan en Casa. 
-                            </li>
-                        </ul>
-                    </div>
-                    <div className="plan__footer">
-                        <button type="submit" className="c-button c-button--red">Seleccionar Plan</button>
-                    </div>
-                </div>
-                */}
             </div>
         </div>
     </section>
