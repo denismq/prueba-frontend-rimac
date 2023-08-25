@@ -1,6 +1,13 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 
 const Summary = () => {
+
+    const user = useSelector((state) => state.user);
+    const {userName, userLastName, userDocument, userPhone} = user;
+    const plans = useSelector((state) => state.plan);
+    const {plan, price} = plans;
+
   return (
     <section className="section section--summary">
         <div className="plans">
@@ -16,7 +23,7 @@ const Summary = () => {
                         <div className="summary__icon">
                             <img src="images/icono-persona.svg" alt="" className=''/>
                         </div>
-                        <div className="summary__text">Rocio Miranda Diaz</div>
+                        <div className="summary__text">{userName} {userLastName}</div>
                     </div>
                 </div>
                 <div className="summary__row">
@@ -24,8 +31,8 @@ const Summary = () => {
                         Responsable de pago
                     </h3>
                     <div className="summary__content">
-                        <p>DNI: 44444444</p>
-                        <p>Celular: 99999999</p>
+                        <p>DNI: {userDocument}</p>
+                        <p>Celular: {userPhone}</p>
                     </div>
                 </div>
                 <div className="summary__row">
@@ -33,8 +40,8 @@ const Summary = () => {
                         Plan Elegido
                     </h3>
                     <div className="summary__content">
-                        <p>Plan en Casa y Clinica</p>
-                        <p>Costo del Plan: $99 al mes</p>
+                        <p>{plan}</p>
+                        <p>Costo del Plan: {`$ ${price}`} al mes</p>
                     </div>
                 </div>
             </div>

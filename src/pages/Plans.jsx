@@ -35,22 +35,12 @@ const Plans = () => {
     const currentAge = today.getFullYear() - birthDate.getFullYear();
 
     
-    var planFilter = list.filter(function (list) {
+    const planFilter = list.filter(function (list) {
         return list.age >= currentAge;
     });
-    console.log(planFilter);
-
-    /*var planFilterDescuento = list.filter(function (list) {
-        const descuento = list.price * 0.05
-        const total = list.price - descuento;
-        return total;
-    });
-
-    console.log('descuento', planFilterDescuento)*/
 
     const handlePlanClick = (index) => {
         setActivePlan(index);
-        //console.log('index plan', index);
     };
 
     const getUserPlan = () => {
@@ -69,6 +59,7 @@ const Plans = () => {
         }else {
             dispatch(getSelectedPlan(plan, price))
         }
+        navigate('/summary');
     }
 
   return (
