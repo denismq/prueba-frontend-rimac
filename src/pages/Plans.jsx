@@ -4,11 +4,12 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { getPlans } from '../redux/actions/planActions';
 
-const planOptions = [
+/*const planOptions = [
     { 
         label: "Para mi", 
         content: "Cotiza tu seguro de salud y agrega familiares si así lo deseas.", 
         image: "images/icono-para-mi.svg",
+        plan:
     },
     { 
         label: "Para alguien más", 
@@ -16,11 +17,25 @@ const planOptions = [
         image: "images/icon-alguien-mas.svg"
     },
   ];
+*/
 
+const descuento = [
+    {
+        price: 39
+    },
+    {
+        price: 99
+    },
+    {
+        price: 49
+    },
+
+]
 const Plans = () => {
 
     const dispatch = useDispatch();
-    const [activePlan, setActivePlan] = useState(null);
+    const [activePlan, setActivePlan] = useState('');
+    //const [filterPlan, setFilterPlan] = useState('');
     
 
 
@@ -43,9 +58,34 @@ const Plans = () => {
     });
     console.log(planFilter);
 
+    var planFilterDescuento = list.filter(function (list) {
+        const descuento = list.price * 0.05
+        const total = list.price - descuento;
+        return total;
+    });
 
+    console.log('descuento', planFilterDescuento)
+
+    const planOptions = [
+        { 
+            label: "Para mi", 
+            content: "Cotiza tu seguro de salud y agrega familiares si así lo deseas.", 
+            image: "images/icono-para-mi.svg",
+            plan: planFilter
+        },
+        { 
+            label: "Para alguien más", 
+            content: "Realiza una cotización para uno de tus familiares o cualquier persona.", 
+            image: "images/icon-alguien-mas.svg",
+            plan: planFilterDescuento
+        },
+      ];
+
+    console.log(planOptions);
     const handlePlanClick = (index) => {
         setActivePlan(index);
+        console.log('index plan', index);
+        //setFilterPlan(index)
     };
 
     const getUserPlan = () => {
@@ -53,9 +93,7 @@ const Plans = () => {
       };
 
     useEffect(() => {
-    
         getUserPlan();
-        //console.log(list);
     }, []);
 
   return (
@@ -119,42 +157,44 @@ const Plans = () => {
             </div>
             <div className="plans__detail">
                 {
-                    planFilter.map((plan, index) => (
-                        <div className="plan" key={index}>
-                            <div className="plan__header">
-                                <div className="plan__title">
-                                    <h3>{plan.name}</h3>
-                                    <div className="plan__cost">
-                                        <p className='plan__cost-text'>COSTO DEL PLAN</p>
-                                        <p className='plan__cost-price'>{`$${plan.price}`} al mes</p>
+                   planFilter.map((plan, index) => {
+                            return (
+                                <div className="plan" key={index}>
+                                    <div className="plan__header">
+                                        <div className="plan__title">
+                                            <h3>{plan.name}</h3>
+                                            <div className="plan__cost">
+                                                <p className='plan__cost-text'>COSTO DEL PLAN</p>
+                                                <p className='plan__cost-price'>{`$${plan.price}`} al mes</p>
+                                            </div>
+                                        </div>
+                                        <div className="plan__icon">
+                                            <img src="images/icono-plan-casa.svg" alt="" className=''/>
+                                        </div>
+                                        
+                                    </div>
+                                    <div className="plan__content">
+                                        <ul>
+                                            {
+                                                plan.description.map((description, index) => (
+                                                    <li className='plan-list__item' key={index}>
+                                                        <span>
+                                                            {description}
+                                                        </span>
+                                                    </li>
+                            
+                                                ))
+                                            }
+
+                                        </ul>
+                                    </div>
+                                    <div className="plan__footer">
+                                        <button type="submit" className="c-button c-button--red">Seleccionar Plan</button>
                                     </div>
                                 </div>
-                                <div className="plan__icon">
-                                    <img src="images/icono-plan-casa.svg" alt="" className=''/>
-                                </div>
-                                
-                            </div>
-                            <div className="plan__content">
-                                <ul>
-                                    {
-                                        plan.description.map((description, index) => (
-                                            <li className='plan-list__item' key={index}>
-                                                <span>
-                                                    {description}
-                                                </span>
-                                            </li>
-                    
-                                        ))
-                                    }
+                            )
 
-                                </ul>
-                            </div>
-                            <div className="plan__footer">
-                                <button type="submit" className="c-button c-button--red">Seleccionar Plan</button>
-                            </div>
-                        </div>
-
-                    ))
+                    })
                 }
                 {/*<div className="plan">
                     <div className="plan__header">
