@@ -1,4 +1,5 @@
 import React from 'react'
+import Control from '../components/Control'
 
 const Plans = () => {
   return (
@@ -19,14 +20,6 @@ const Plans = () => {
             </ul>
         </div>
         <div className="plans">
-            <header className="headline">
-                <h1 className="headline__title">
-                    Rocío ¿Para quién deseas cotizar?
-                </h1>
-                <p className="headline__description">
-                    Selecciona la opción que se ajuste más a tus necesidades
-                </p>
-            </header>
             <div className="plans__options">
                 <div className="plans__option">
                     <input type="radio" id="for-me" name="plan"/>
@@ -147,14 +140,17 @@ const Plans = () => {
                         <ul className='plan-list'>
                             <li className='plan-list__item'>
                                 <span>
-                                    Un Chequeo preventivo general de manera presencial o virtual.
+                                    Medico general a domicilio
+                                    por S/20 y medicinas cubiertas al 100%
                                 </span>
                             </li>
                             <li className='plan-list__item'>
-                                Acceso a Vacunas en el Programa del MINSA en centros privados. 
+                                Videoconsulta y orientación telefónica al 100% 
+                                en medicina general + pediatría.
                             </li>
                             <li className='plan-list__item'>
-                                Incluye todos los beneficios del Plan en Casa. 
+                                Indemnización de S/300 en caso de hospitalización 
+                                por más de un día.
                             </li>
                         </ul>
                     </div>

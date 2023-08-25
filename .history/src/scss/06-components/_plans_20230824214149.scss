@@ -2,40 +2,12 @@
     max-width: 928px;
     width: 100%;
     margin: 0 auto;
-    padding-top: 40px;
-    padding-bottom: 80px;
-    @media (max-width: 767px){
-        padding-left: 24px;
-        padding-right: 24px;
-    }
-    .headline{
-        margin-top: 56px;
-        margin-bottom: 32px;
-        text-align: center;
-        &__title{
-            font-family: Lato;
-            font-size: 40px;
-            font-style: normal;
-            font-weight: 700;
-            line-height: 48px; /* 120% */
-            letter-spacing: -0.6px;
-        }
-        &__description{
-            color: #141938;
-            font-family: Lato;
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: 28px; /* 175% */
-            letter-spacing: 0.1px;
-        }
-    }
     &__options{
         display: flex;
         justify-content: space-around;
         max-width: 544px;
         gap: 32px;
-        margin: 0 auto 20px;
+        margin: 0 auto;
     }
     &__option{
         position: relative;
@@ -121,17 +93,10 @@
     }
     &__detail{
         display: flex;
-        gap: 32px;
-        @media (max-width: 767px){
-            flex-wrap: wrap;
-            justify-content: center;
-        }
     }
 }
 
 .plan{
-    display: flex;
-    flex-direction: column;
     max-width: 288px;
     border-radius: 24px;
     padding: 68px 32px 48px 32px;
@@ -152,11 +117,6 @@
             line-height: 32px; /* 133.333% */
             letter-spacing: -0.2px;
         }
-    }
-    &__icon{
-        display: flex;
-        flex-shrink: 0;
-        align-items: flex-start;
     }
     &__cost{
         margin-top: 24px;
@@ -184,35 +144,17 @@
 
     }
     &__footer{
-        display: flex;
-        justify-content: center;
-        margin-top: auto;
-        .c-button{
 
-        }
     }
 }
 
 .plan-list{
+    list-style-type: disc;
     &__item{
-        display: flex;
-        margin-bottom: 24px;
         &::before{
-            content: '.';
-            width: 7px;
-            height: 7px;
-            display: block;
-            background-color: $black;
-            flex-shrink: 0;
-            margin-right: 10px;
-            border-radius: 50%;
-            margin-top: 8px;
+            content: '';
+            width: 10px;
+            height: 10px;
         }
-    }
-    &__bullet{
-        width: 10px;
-        height: 10px;
-        display: block;
-        background-color: red;
     }
 }

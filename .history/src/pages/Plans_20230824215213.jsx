@@ -1,4 +1,5 @@
 import React from 'react'
+import Control from '../components/Control'
 
 const Plans = () => {
   return (
@@ -19,14 +20,6 @@ const Plans = () => {
             </ul>
         </div>
         <div className="plans">
-            <header className="headline">
-                <h1 className="headline__title">
-                    Rocío ¿Para quién deseas cotizar?
-                </h1>
-                <p className="headline__description">
-                    Selecciona la opción que se ajuste más a tus necesidades
-                </p>
-            </header>
             <div className="plans__options">
                 <div className="plans__option">
                     <input type="radio" id="for-me" name="plan"/>
@@ -77,6 +70,7 @@ const Plans = () => {
                     <div className="plan__content">
                         <ul className='plan-list'>
                             <li className='plan-list__item'>
+                                <div className="plan-list__bullet"></div>
                                 <span>
                                     Medico general a domicilio
                                     por S/20 y medicinas cubiertas al 100%
@@ -93,73 +87,7 @@ const Plans = () => {
                         </ul>
                     </div>
                     <div className="plan__footer">
-                        <button type="submit" className="c-button c-button--red">Seleccionar Plan</button>
-                    </div>
-                </div>
-                <div className="plan">
-                    <div className="plan__header">
-                        <div className="plan__title">
-                            <h3>Plan en Casa y Clínica</h3>
-                            <div className="plan__cost">
-                                <p className='plan__cost-text'>COSTO DEL PLAN</p>
-                                <p className='plan__cost-price'>$39 al mes</p>
-                            </div>
-                        </div>
-                        <div className="plan__icon">
-                            <img src="images/icono-plan-casa-clinica.svg" alt="" className=''/>
-                        </div>
-                        
-                    </div>
-                    <div className="plan__content">
-                        <ul className='plan-list'>
-                            <li className='plan-list__item'>
-                                <span>
-                                    Consultas en clínica para cualquier especialidad. 
-                                </span>
-                            </li>
-                            <li className='plan-list__item'>
-                                Medicinas y exámenes derivados cubiertos al 80%
-                            </li>
-                            <li className='plan-list__item'>
-                                Atención médica en más de 200 clínicas del país.
-                            </li>
-                        </ul>
-                    </div>
-                    <div className="plan__footer">
-                        <button type="submit" className="c-button c-button--red">Seleccionar Plan</button>
-                    </div>
-                </div>
-                <div className="plan">
-                    <div className="plan__header">
-                        <div className="plan__title">
-                            <h3>Plan en Casa + Chequeo</h3>
-                            <div className="plan__cost">
-                                <p className='plan__cost-text'>COSTO DEL PLAN</p>
-                                <p className='plan__cost-price'>$39 al mes</p>
-                            </div>
-                        </div>
-                        <div className="plan__icon">
-                            <img src="images/icono-plan-casa-chequeo.svg" alt="" className=''/>
-                        </div>
-                        
-                    </div>
-                    <div className="plan__content">
-                        <ul className='plan-list'>
-                            <li className='plan-list__item'>
-                                <span>
-                                    Un Chequeo preventivo general de manera presencial o virtual.
-                                </span>
-                            </li>
-                            <li className='plan-list__item'>
-                                Acceso a Vacunas en el Programa del MINSA en centros privados. 
-                            </li>
-                            <li className='plan-list__item'>
-                                Incluye todos los beneficios del Plan en Casa. 
-                            </li>
-                        </ul>
-                    </div>
-                    <div className="plan__footer">
-                        <button type="submit" className="c-button c-button--red">Seleccionar Plan</button>
+
                     </div>
                 </div>
             </div>

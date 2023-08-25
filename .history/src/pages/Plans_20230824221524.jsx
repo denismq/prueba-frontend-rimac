@@ -1,4 +1,5 @@
 import React from 'react'
+import Control from '../components/Control'
 
 const Plans = () => {
   return (
@@ -19,14 +20,6 @@ const Plans = () => {
             </ul>
         </div>
         <div className="plans">
-            <header className="headline">
-                <h1 className="headline__title">
-                    Rocío ¿Para quién deseas cotizar?
-                </h1>
-                <p className="headline__description">
-                    Selecciona la opción que se ajuste más a tus necesidades
-                </p>
-            </header>
             <div className="plans__options">
                 <div className="plans__option">
                     <input type="radio" id="for-me" name="plan"/>
@@ -99,14 +92,14 @@ const Plans = () => {
                 <div className="plan">
                     <div className="plan__header">
                         <div className="plan__title">
-                            <h3>Plan en Casa y Clínica</h3>
+                            <h3>Plan en Casa</h3>
                             <div className="plan__cost">
                                 <p className='plan__cost-text'>COSTO DEL PLAN</p>
                                 <p className='plan__cost-price'>$39 al mes</p>
                             </div>
                         </div>
                         <div className="plan__icon">
-                            <img src="images/icono-plan-casa-clinica.svg" alt="" className=''/>
+                            <img src="images/icono-plan-casa.svg" alt="" className=''/>
                         </div>
                         
                     </div>
@@ -114,14 +107,55 @@ const Plans = () => {
                         <ul className='plan-list'>
                             <li className='plan-list__item'>
                                 <span>
-                                    Consultas en clínica para cualquier especialidad. 
+                                    Medico general a domicilio
+                                    por S/20 y medicinas cubiertas al 100%
                                 </span>
                             </li>
                             <li className='plan-list__item'>
-                                Medicinas y exámenes derivados cubiertos al 80%
+                                Videoconsulta y orientación telefónica al 100% 
+                                en medicina general + pediatría.
                             </li>
                             <li className='plan-list__item'>
-                                Atención médica en más de 200 clínicas del país.
+                                Indemnización de S/300 en caso de hospitalización 
+                                por más de un día.
+                            </li>
+                        </ul>
+                    </div>
+                    <div className="plan__footer">
+                        <button type="submit" className="c-button c-button--red">Seleccionar Plan</button>
+                    </div>
+                </div>
+            </div>
+            <div className="plans__detail">
+                <div className="plan">
+                    <div className="plan__header">
+                        <div className="plan__title">
+                            <h3>Plan en Casa</h3>
+                            <div className="plan__cost">
+                                <p className='plan__cost-text'>COSTO DEL PLAN</p>
+                                <p className='plan__cost-price'>$39 al mes</p>
+                            </div>
+                        </div>
+                        <div className="plan__icon">
+                            <img src="images/icono-plan-casa.svg" alt="" className=''/>
+                        </div>
+                        
+                    </div>
+                    <div className="plan__content">
+                        <ul className='plan-list'>
+                            <li className='plan-list__item'>
+                                <span>
+                                    Medico general a domicilio
+                                    por S/20 y medicinas cubiertas al 100%
+                                </span>
+                            </li>
+                            <li className='plan-list__item'>
+                                Videoconsulta y orientación telefónica al 100% 
+                                en medicina general + pediatría.
+                            </li>
+                            <li className='plan-list__item'>
+                                Indemnización de S/300 en caso de hospitalización 
+                                por más de un día.
                             </li>
                         </ul>
                     </div>
@@ -132,14 +166,14 @@ const Plans = () => {
                 <div className="plan">
                     <div className="plan__header">
                         <div className="plan__title">
-                            <h3>Plan en Casa + Chequeo</h3>
+                            <h3>Plan en Casa</h3>
                             <div className="plan__cost">
                                 <p className='plan__cost-text'>COSTO DEL PLAN</p>
                                 <p className='plan__cost-price'>$39 al mes</p>
                             </div>
                         </div>
                         <div className="plan__icon">
-                            <img src="images/icono-plan-casa-chequeo.svg" alt="" className=''/>
+                            <img src="images/icono-plan-casa.svg" alt="" className=''/>
                         </div>
                         
                     </div>
@@ -147,14 +181,17 @@ const Plans = () => {
                         <ul className='plan-list'>
                             <li className='plan-list__item'>
                                 <span>
-                                    Un Chequeo preventivo general de manera presencial o virtual.
+                                    Medico general a domicilio
+                                    por S/20 y medicinas cubiertas al 100%
                                 </span>
                             </li>
                             <li className='plan-list__item'>
-                                Acceso a Vacunas en el Programa del MINSA en centros privados. 
+                                Videoconsulta y orientación telefónica al 100% 
+                                en medicina general + pediatría.
                             </li>
                             <li className='plan-list__item'>
-                                Incluye todos los beneficios del Plan en Casa. 
+                                Indemnización de S/300 en caso de hospitalización 
+                                por más de un día.
                             </li>
                         </ul>
                     </div>

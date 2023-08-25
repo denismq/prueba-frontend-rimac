@@ -1,4 +1,5 @@
 import React from 'react'
+import Control from '../components/Control'
 
 const Plans = () => {
   return (
@@ -19,14 +20,6 @@ const Plans = () => {
             </ul>
         </div>
         <div className="plans">
-            <header className="headline">
-                <h1 className="headline__title">
-                    Rocío ¿Para quién deseas cotizar?
-                </h1>
-                <p className="headline__description">
-                    Selecciona la opción que se ajuste más a tus necesidades
-                </p>
-            </header>
             <div className="plans__options">
                 <div className="plans__option">
                     <input type="radio" id="for-me" name="plan"/>

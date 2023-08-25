@@ -3,7 +3,6 @@
     width: 100%;
     margin: 0 auto;
     padding-top: 40px;
-    padding-bottom: 80px;
     @media (max-width: 767px){
         padding-left: 24px;
         padding-right: 24px;
@@ -35,7 +34,7 @@
         justify-content: space-around;
         max-width: 544px;
         gap: 32px;
-        margin: 0 auto 20px;
+        margin: 0 auto;
     }
     &__option{
         position: relative;
@@ -122,10 +121,6 @@
     &__detail{
         display: flex;
         gap: 32px;
-        @media (max-width: 767px){
-            flex-wrap: wrap;
-            justify-content: center;
-        }
     }
 }
 
