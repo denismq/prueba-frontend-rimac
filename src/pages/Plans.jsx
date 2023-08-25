@@ -26,7 +26,7 @@ const Plans = () => {
     const navigate = useNavigate();
 
     const user = useSelector((state) => state.user);
-    const {userName, userLastName, userBirthday} = user;
+    const {userName, userBirthday} = user;
     const plan = useSelector((state) => state.plan);
     const {list} = plan;
 
@@ -66,7 +66,7 @@ const Plans = () => {
     <section className='section section--plan'>
         <div className="content-steps">
             <ul className="steps">
-                <li className="steps__item">
+                <li className="steps__item active">
                     <span className="steps__number">1</span>
                     <span className="steps__text">Planes y Coberturas</span>
                 </li>
@@ -90,7 +90,7 @@ const Plans = () => {
             </div>
             <header className="headline">
                 <h1 className="headline__title">
-                    {userName} {userLastName} ¿Para quién deseas cotizar?
+                    {userName} ¿Para quién deseas cotizar?
                 </h1>
                 <p className="headline__description">
                     Selecciona la opción que se ajuste más a tus necesidades

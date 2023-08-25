@@ -10,11 +10,20 @@
     &__item{
         display: flex;
         align-items: center;
+        &.active {
+            .steps__number {
+                background-color: #4F4FFF;
+            }
+            .steps__text {
+                color: #141938;
+                font-weight: 700;
+            }
+        }
     }
     &__number{
         width: 24px;
         height: 24px;
-        background-color: #4F4FFF;
+        background-color: #7981B2;
         display: flex;
         align-items: center;
         justify-content: center;
