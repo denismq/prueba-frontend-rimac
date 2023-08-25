@@ -16,6 +16,9 @@ const Input = ({
     onChange(value, name);
   };
 
+  const handleOnBlur = (e) => {
+    onBlur(e.target.value);
+  }
   return (
     <>
       {label && <label>{label}</label>}

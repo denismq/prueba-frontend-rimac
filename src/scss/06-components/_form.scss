@@ -51,6 +51,7 @@
     }
     &__row {
         margin-bottom: 16px;
+        position: relative;
         label{
             color: #0A051E;
             font-family: Lato;
@@ -66,13 +67,23 @@
         .form-control{
             border-radius: 6px;
             border: 1px solid $gray;
-            padding: 8px 16px;
+            padding: 15px 16px;
             font-family: Lato;
             &.no-border-radius {
                 border-radius: 0 8px 8px 0;
             }
             &:focus{
                 box-shadow: none;
+                + .focus-label {
+                    top: 2px;
+                    font-size: 12px;
+                }
+            }
+            &.has-val{
+                + .focus-label {
+                    top: 2px;
+                    font-size: 12px;
+                }
             }
             &.is-invalid {
                 border-color: red;
@@ -148,3 +159,15 @@
     margin-bottom: 70px;
 }
 
+.focus-label {
+    color: #999999;
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: normal;
+    position: absolute;
+    left: 13px;
+    top: 14px;
+    pointer-events: none;
+    -webkit-transition: 0.2s ease all;
+    transition: 0.2s ease all;
+}

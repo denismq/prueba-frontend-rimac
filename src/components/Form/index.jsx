@@ -33,6 +33,7 @@ const Form = () => {
 
   const [isCheckedPrivacy, setIsCheckedPrivacy] = useState(true);
   const [isCheckedCC, setIsCheckedCC] = useState(true);
+  const [focus, setFocus] = useState(false);
   const user = useSelector((state) => state.user);
   const {states} = user;
 
@@ -60,6 +61,9 @@ const Form = () => {
     }
   }, [states])
   
+  const handleFocus = (val) => {
+    setFocus(val)
+  };
 
   const Error = ({ children }) => <p style={{ color: 'red', fontSize: '14px', fontFamily: 'Lato' }}>{children}</p>; 
 
@@ -113,15 +117,19 @@ const Form = () => {
                       <Input
                           type='text'
                           name='document_number'
-                          className={`form-control no-border-radius ${
+                          className={`${focus ? "has-val" : ""} form-control no-border-radius ${
                           errors['document_number'] ? 'is-invalid' : ''
                           }`}
                           value={value}
                           onChange={onChange}
-                          onBlur={onBlur}
+                          onBlur={(val) => {
+                            onBlur(val)
+                            handleFocus(true)
+                          }}
                       />
                   )}
                 />
+                <span className="focus-label">Nro. de documento</span>
                 {errors['document_number'] && <Error>{errors['document_number']?.message}</Error>}               
               </div>
             </div>
@@ -143,15 +151,19 @@ const Form = () => {
                         <Input
                             type='text'
                             name='cellphone'
-                            className={`form-control ${
+                            className={`${focus ? "has-val" : ""} form-control ${
                             errors['cellphone'] ? 'is-invalid' : ''
                             }`}
                             value={value}
                             onChange={onChange}
-                            onBlur={onBlur}
+                            onBlur={(val) => {
+                              onBlur(val)
+                              handleFocus(true)
+                            }}
                         />
                     )}
                 />
+                <span className="focus-label">Celular</span>
                 {errors['cellphone'] && <Error>{errors['cellphone']?.message}</Error>}                 
               </div>
             </div>
