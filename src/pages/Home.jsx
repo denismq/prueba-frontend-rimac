@@ -4,6 +4,7 @@ import Form from '../components/Form'
 const Home = () => {
   return (
     <section className='section section--home'> 
+        <div className="blur blur--left"></div>
         <div className="o-container">
             <div className="container-fluid">
                 <div className="row">
@@ -16,6 +17,7 @@ const Home = () => {
                 </div>
             </div>
         </div>
+        <div className="blur blur--right"></div>
     </section> 
   )
 }

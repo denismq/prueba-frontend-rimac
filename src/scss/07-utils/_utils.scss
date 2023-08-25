@@ -11,3 +11,51 @@
         display: none;
     }
 }
+
+.blur {
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 432px;
+    height: 768px;
+    position: absolute;
+    z-index: -1;
+    @media (max-width: 767px){
+        width: 242px;
+        height: 428px;
+    }
+    @media (max-width: 480px){
+        width: 110px;
+        height: 193px;
+    }
+    &--left {
+        background-image: url('images/blur-left.png');
+        bottom: 0;
+    }
+    &--right{
+        background-image: url('images/blur-right.png');
+        top: 0;
+        right: 0;
+    }
+}
+.blur-left{
+    background-image: url('images/blur-left.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 432px;
+    height: 768px;
+    position: absolute;
+    z-index: -1;
+    bottom: 0;
+}
+
+.blur-right {
+    background-image: url('images/blur-right.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 432px;
+    height: 768px;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+}
