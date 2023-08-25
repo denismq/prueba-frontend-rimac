@@ -11,7 +11,10 @@ const Summary = () => {
             </header>
             <div className="summary">
                 <div className="summary__row">
-                    <span>PRECIOS CALCULADOS PARA:</span>
+                    {/*<span>PRECIOS CALCULADOS PARA:</span>*/}
+                    <h3 className="summary__header">
+                        PRECIOS CALCULADOS PARA:
+                    </h3>
                     <div className="summary__name">
                         <div className="summary__icon">
                             <img src="images/icono-persona.svg" alt="" className=''/>

@@ -32,10 +32,6 @@ const Summary = () => {
                     <h3 className="summary__header">
                         Plan Elegido
                     </h3>
-                    <div className="summary__content">
-                        <p>Plan en Casa y Clinica</p>
-                        <p>Costo del Plan: $99 al mes</p>
-                    </div>
                 </div>
             </div>
         </div>

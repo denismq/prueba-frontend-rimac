@@ -23,19 +23,11 @@ const Summary = () => {
                     <h3 className="summary__header">
                         Responsable de pago
                     </h3>
-                    <div className="summary__content">
-                        <p>DNI: 44444444</p>
-                        <p>Celular: 99999999</p>
-                    </div>
                 </div>
                 <div className="summary__row">
                     <h3 className="summary__header">
                         Plan Elegido
                     </h3>
-                    <div className="summary__content">
-                        <p>Plan en Casa y Clinica</p>
-                        <p>Costo del Plan: $99 al mes</p>
-                    </div>
                 </div>
             </div>
         </div>

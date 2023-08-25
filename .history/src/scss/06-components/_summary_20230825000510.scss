@@ -1,0 +1,47 @@
+.summary{
+    border-radius: 24px;
+    background: $white;
+    box-shadow: 0px 1px 24px 0px rgba(174, 172, 243, 0.25);
+    padding: 24px 32px;
+    &__row{
+        margin-bottom: 32px;
+        &:first-child{
+            border-bottom: 1px solid #D7DBF5;
+            padding-bottom: 16px;
+        }
+        span{
+            color: #141938;
+            font-family: Lato;
+            font-size: 10px;
+            font-style: normal;
+            font-weight: 900;
+            line-height: 16px; /* 160% */
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+        }
+    }
+    &__name{
+        display: flex;
+    }
+    &__icon{
+        margin-right: 12px;
+    }
+    &__text{
+        color: #141938;
+        font-family: Lato;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 28px; /* 140% */
+        letter-spacing: -0.2px;
+    }
+    &__header{
+        color: #141938;
+        font-family: Lato;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 24px; /* 150% */
+        letter-spacing: 0.2px;
+    }
+}
