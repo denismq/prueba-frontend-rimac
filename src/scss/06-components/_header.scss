@@ -1,7 +1,3 @@
-.logo {
-
-}
-
 .main-header {
     width: 100%;
     height: 60px;
@@ -39,7 +35,7 @@
         letter-spacing: 0.4px;
         &::before{
             content: '';
-            background-image: url('images/phone.svg');
+            background-image: url('/images/phone.svg');
             background-size: contain;
             background-repeat: no-repeat;
             width: 20px;

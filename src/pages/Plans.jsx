@@ -80,14 +80,6 @@ const Plans = () => {
             </ul>
         </div>
         <div className="plans">
-            <div className="back">
-                <Link to={'/'}>
-                    <div className="back__icon">
-
-                    </div>
-                    <p className="back__text">Volver</p>
-                </Link>
-            </div>
             <header className="headline">
                 <h1 className="headline__title">
                     {userName} ¿Para quién deseas cotizar?

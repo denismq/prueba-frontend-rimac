@@ -37,25 +37,3 @@
         right: 0;
     }
 }
-.blur-left{
-    background-image: url('images/blur-left.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 432px;
-    height: 768px;
-    position: absolute;
-    z-index: -1;
-    bottom: 0;
-}
-
-.blur-right {
-    background-image: url('images/blur-right.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 432px;
-    height: 768px;
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    right: 0;
-}
