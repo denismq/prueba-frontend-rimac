@@ -148,6 +148,20 @@
         border-bottom: 1px solid #D7DBF5;
         padding-bottom: 24px;
         margin-bottom: 24px;
+        position: relative;
+    }
+    &__tag{
+        background-color: #7DF0BA;
+        position: absolute;
+        top: -30px;
+        font-family: Lato;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 900;
+        line-height: 16px; /* 133.333% */
+        letter-spacing: 0.4px;
+        padding: 2px 8px;
+        border-radius: 6px;
     }
     &__title{
         padding-right: 16px;
@@ -177,6 +191,16 @@
         line-height: 16px; /* 133.333% */
         letter-spacing: 0.6px;
         text-transform: uppercase;
+    }
+    &__previous-price{
+        color: #7981B2;
+        text-decoration: line-through;
+        font-family: Lato;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px; /* 142.857% */
+        letter-spacing: -0.2px;
     }
     &__cost-price{
         color: #141938;
@@ -221,20 +245,5 @@
         height: 10px;
         display: block;
         background-color: red;
-    }
-}
-
-.back{
-    &__icon{
-
-    }
-    &__text{
-        color: #4F4FFF;
-        font-family: Lato;
-        font-size: 18px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: 20px; /* 111.111% */
-        letter-spacing: 0.4px;
     }
 }

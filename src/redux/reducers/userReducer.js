@@ -4,6 +4,7 @@ const initialState = {
   //userName: localStorage.getItem('user'),
   userName: '',
   userLastName: '',
+  userDocumentType: '',
   userDocument: '',
   userPhone: '',
   userBirthday: '',
@@ -29,8 +30,14 @@ const userReducer = (state = initialState, action) => {
         },
       };
     case USER_SUCCESS: {
-      const { userName, userLastName, userDocument, userPhone, userBirthday } =
-        action.payload;
+      const {
+        userName,
+        userLastName,
+        userDocumentType,
+        userDocument,
+        userPhone,
+        userBirthday,
+      } = action.payload;
       return {
         ...state,
         states: {
@@ -40,6 +47,7 @@ const userReducer = (state = initialState, action) => {
         },
         userName,
         userLastName,
+        userDocumentType,
         userDocument,
         userPhone,
         userBirthday,

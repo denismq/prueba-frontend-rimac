@@ -6,8 +6,6 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Plans from './pages/Plans';
 import Summary from './pages/Summary';
-import { useDispatch } from 'react-redux';
-
 
 function App() {
 

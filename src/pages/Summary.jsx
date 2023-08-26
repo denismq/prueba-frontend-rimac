@@ -1,11 +1,14 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Summary = () => {
 
+    const navigate = useNavigate();
+    
     const user = useSelector((state) => state.user);
-    const {userName, userLastName, userDocument, userPhone} = user;
+    const {userName, userLastName, userDocumentType, userDocument, userPhone} = user;
     const plans = useSelector((state) => state.plan);
     const {plan, price} = plans;
 
@@ -27,13 +30,11 @@ const Summary = () => {
             </ul>
         </div>        
         <div className="plans">
-            <div className="back">
-                <Link to={'/plans'}>
-                    <div className="back__icon">
+            <div className="back" onClick={() => navigate('/plans') }>
+                <div className="back__icon">
 
-                    </div>
-                    <p className="back__text">Volver</p>
-                </Link>
+                </div>
+                <p className="back__text">Volver</p>
             </div>            
             <header className="headline">
                 <h1 className="headline__title">
@@ -55,7 +56,7 @@ const Summary = () => {
                         Responsable de pago
                     </h3>
                     <div className="summary__content">
-                        <p>DNI: {userDocument}</p>
+                        <p>{userDocumentType}: {userDocument}</p>
                         <p>Celular: {userPhone}</p>
                     </div>
                 </div>

@@ -1,6 +1,5 @@
 import React, { useState, useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { getPlans, getSelectedPlan } from '../redux/actions/planActions';
 
@@ -52,7 +51,6 @@ const Plans = () => {
     }, []);
 
     const getSelectedPlanOption = (plan, price, activePlan) => {
-        //debugger
         if (activePlan === 1) {
             const price_discount = Math.abs((price * 0.05) - price)
             dispatch(getSelectedPlan(plan, price_discount))
@@ -120,19 +118,37 @@ const Plans = () => {
                     return (
                         <div className="plan" key={index}>
                             <div className="plan__header">
+                                {
+                                    index === 1 && (
+                                        <div className="plan__tag">Plan Recomendado</div>
+                                    )
+                                }
                                 <div className="plan__title">
                                     <h3>{plan.name}</h3>
                                     <div className="plan__cost">
                                         <p className='plan__cost-text'>COSTO DEL PLAN</p>
+                                        { 
+                                            activePlan === 1 && (
+                                                <p className='plan__previous-price'>${plan.price} antes</p>
+                                            )
+                                        }
                                         <p className='plan__cost-price'>
                                             {`$ ${activePlan === 1 ? Math.abs((plan.price * 0.05) - plan.price) : plan.price} `} 
                                             al mes
                                         </p>
                                     </div>
                                 </div>
-                                <div className="plan__icon">
-                                    <img src="images/icono-plan-casa.svg" alt="" className=''/>
-                                </div>
+                                {
+                                    index === 1 ? (
+                                        <div className="plan__icon">
+                                            <img src="images/icono-plan-casa-clinica.svg" alt=""/>
+                                        </div>
+                                    ): (
+                                        <div className="plan__icon">
+                                            <img src="images/icono-plan-casa.svg" alt=""/>
+                                        </div>
+                                    )
+                                }
                             </div>
                             <div className="plan__content">
                                 <ul>

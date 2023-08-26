@@ -9,14 +9,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUser } from '../../redux/actions/userActions';
 
 const documents = [
-  { label: 'DNI', value: 'dni' },
-  { label: 'RUC', value: 'ruc' },
+  { label: 'DNI', value: 'DNI' },
+  { label: 'RUC', value: 'RUC' },
 ];
-
-const emailPattern = {
-  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-  message: 'Ingrese un email valido',
-};
 
 const numberPattern = {
   value: /^(0|[1-9]\d*)(\.\d+)?$/,
@@ -24,7 +19,7 @@ const numberPattern = {
 };
 
 const defaultValues = {
-  document_type: '',
+  document_type: documents[0].value,
   document_number: '',
   cellphone: ''
 };
@@ -34,6 +29,7 @@ const Form = () => {
   const [isCheckedPrivacy, setIsCheckedPrivacy] = useState(true);
   const [isCheckedCC, setIsCheckedCC] = useState(true);
   const [focus, setFocus] = useState(false);
+  const [maxNumDoc, setMaxNumDoc] = useState(8);
   const user = useSelector((state) => state.user);
   const {states} = user;
 
@@ -43,16 +39,14 @@ const Form = () => {
   const {
     handleSubmit,
     control,
-    reset,
-    formState: { isSubmitting, errors, isSubmitSuccessful },
+    setValue,
+    formState: { errors },
     } = useForm({
-    defaultValues,
+      defaultValues,
     });
 
   const onSubmit = (data) => {
-      console.log(data);
-      //navigate('/plans');
-      dispatch(getUser(data.document_number, data.cellphone))
+      dispatch(getUser(data.document_type, data.document_number, data.cellphone))
   }
 
   useEffect(() => {
@@ -63,6 +57,12 @@ const Form = () => {
   
   const handleFocus = (val) => {
     setFocus(val)
+  };
+
+  const handleMaxLength = (val) => {
+    const maxLength = val === 'DNI' ? 8 : 11;
+    setValue('document_number', '');
+    setMaxNumDoc(maxLength);
   };
 
   const Error = ({ children }) => <p style={{ color: 'red', fontSize: '14px', fontFamily: 'Lato' }}>{children}</p>; 
@@ -93,7 +93,11 @@ const Form = () => {
                             name='document_type'
                             className= 'form-control'
                             value={value}
-                            onChange={onChange}
+                            onChange={(val) => {
+                              onChange(val);
+                              console.log(val);
+                              handleMaxLength(val);
+                            }}                            
                             onBlur={onBlur}
                         />
                     )}
@@ -126,6 +130,7 @@ const Form = () => {
                             onBlur(val)
                             handleFocus(true)
                           }}
+                          maxLength={maxNumDoc}
                       />
                   )}
                 />
