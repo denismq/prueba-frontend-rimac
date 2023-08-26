@@ -11,24 +11,12 @@ import { useDispatch } from 'react-redux';
 
 function App() {
 
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    //debugger;
-    const loggedIn = localStorage.getItem('user');
-    if (loggedIn) {
-      const userInfo = JSON.parse(loggedIn);
-      //hacer un dispatch para setear el usuario del localstorage
-      dispatch(setUserInfo(userInfo.user));
-    }
-  }, [dispatch]);
-
   return (
     <Router>
       <Header/>
       <Routes>
         <Route path="/" element={<Home/>}/>
-        <Route path="plans" element={<Plans />}/>
+        <Route path="/plans" element={<Plans />}/>
         <Route path="/summary" element={<Summary />}/>
       </Routes>
       <Footer/>

@@ -6,9 +6,9 @@ const Header = () => {
         <div className="o-container">
             <div className="main-header__inner">
                 <div className="main-header__inner-left">
-                  <a href="" className='logo'>
+                  <a href="#" className='logo'>
                       <img src="images/logo-rimac.svg" alt="Logo" />
-                  </a>
+                  </a> 
                 </div>
                 <div className="main-header__inner-right">
                   <p className='main-header__text'>¡Compra por este medio! </p>
