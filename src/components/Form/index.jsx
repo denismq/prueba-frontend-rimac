@@ -26,9 +26,11 @@ const defaultValues = {
 
 const Form = () => {
 
+  
   const [isCheckedPrivacy, setIsCheckedPrivacy] = useState(true);
   const [isCheckedCC, setIsCheckedCC] = useState(true);
   const [focus, setFocus] = useState(false);
+  const [isActive, setIsActive] = useState(false);
   const [maxNumDoc, setMaxNumDoc] = useState(8);
   const user = useSelector((state) => state.user);
   const {states} = user;
@@ -57,6 +59,16 @@ const Form = () => {
   
   const handleFocus = (val) => {
     setFocus(val)
+  };
+
+  const handleChange = (val) => {
+    //debugger;
+    setInput(val)
+    if (val !== '') {
+      setIsActive(true)
+    }else {
+      setIsActive(false)
+    }
   };
 
   const handleMaxLength = (val) => {
@@ -121,15 +133,28 @@ const Form = () => {
                       <Input
                           type='text'
                           name='document_number'
-                          className={`${focus ? "has-val" : ""} form-control no-border-radius ${
+                          className={`${isActive ? "is-active" : ""} form-control no-border-radius ${
                           errors['document_number'] ? 'is-invalid' : ''
                           }`}
                           value={value}
-                          onChange={onChange}
-                          onBlur={(val) => {
+                          //onChange={onChange}
+                          onChange={(value) => {
+                            onChange(value);
+                            //debugger;
+                            handleChange(value)
+                          }}
+                          /*onBlur={(val) => {
                             onBlur(val)
                             handleFocus(true)
+                          }}*/
+                          /*onFocus={() => {
+                            //onBlur(val)
+                            handleFocus(true)
                           }}
+                          onBlur={() => {
+                            //onBlur(val)
+                            handleFocus(false)
+                          }}*/
                           maxLength={maxNumDoc}
                       />
                   )}
@@ -137,7 +162,7 @@ const Form = () => {
                 <span className="focus-label">Nro. de documento</span>
                 {errors['document_number'] && <Error>{errors['document_number']?.message}</Error>}               
               </div>
-            </div>
+            </div>           
           </div>
           <div className="row">
             <div className="col-md-12">
@@ -156,15 +181,26 @@ const Form = () => {
                         <Input
                             type='text'
                             name='cellphone'
-                            className={`${focus ? "has-val" : ""} form-control ${
+                            className={`${isActive ? "is-active" : ""} form-control ${
                             errors['cellphone'] ? 'is-invalid' : ''
                             }`}
                             value={value}
-                            onChange={onChange}
-                            onBlur={(val) => {
+                            onChange={(value) => {
+                              onChange(value);
+                              handleChange(value)
+                            }}
+                            /*onBlur={(val) => {
                               onBlur(val)
                               handleFocus(true)
+                            }}*/
+                            /*onFocus={() => {
+                              //onBlur(val)
+                              handleFocus(true)
                             }}
+                            onBlur={() => {
+                              //onBlur(val)
+                              handleFocus(false)
+                            }}*/
                         />
                     )}
                 />
