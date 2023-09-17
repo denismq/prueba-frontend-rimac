@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import Plans from './pages/Plans';
 import Summary from './pages/Summary';
 import Prueba from './pages/Prueba';
+import PrivateRoute from './routes/PrivateRoutes';
 
 function App() {
 
@@ -15,9 +16,11 @@ function App() {
       <Header/>
       <Routes>
         <Route path="/" element={<Home/>}/>
-        <Route path="/plans" element={<Plans />}/>
-        <Route path="/summary" element={<Summary />}/>
         <Route path="/prueba" element={<Prueba />}/>
+        <Route element={<PrivateRoute />}>
+          <Route path="/plans" element={<Plans />}/>
+          <Route path="/summary" element={<Summary />}/>
+        </Route>
       </Routes>
       <Footer/>
     </Router>

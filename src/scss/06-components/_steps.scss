@@ -10,6 +10,7 @@
     &__item{
         display: flex;
         align-items: center;
+        gap: 16px;
         &.active {
             .steps__number {
                 background-color: #4F4FFF;
@@ -33,7 +34,7 @@
         font-size: 12px;
         font-style: normal;
         font-weight: 700;
-        margin-right: 16px;
+        //margin-right: 16px;
     }
     &__dots{
         border-top: 2px dashed #7981B2;

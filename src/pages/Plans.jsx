@@ -33,12 +33,13 @@ const Plans = () => {
     const birthDate = new Date(userBirthday);
     const currentAge = today.getFullYear() - birthDate.getFullYear();
 
-    
+    //debugger;
     const planFilter = list.filter(function (list) {
         return list.age >= currentAge;
     });
 
     const handlePlanClick = (index) => {
+        //debugger
         setActivePlan(index);
     };
 

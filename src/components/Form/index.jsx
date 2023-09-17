@@ -63,7 +63,7 @@ const Form = () => {
 
   const handleChange = (val) => {
     //debugger;
-    setInput(val)
+    //setInput(val)
     if (val !== '') {
       setIsActive(true)
     }else {
