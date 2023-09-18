@@ -29,8 +29,9 @@ const Plans = () => {
     const plan = useSelector((state) => state.plan);
     const {list} = plan;
 
+    const userBirthdayReplace = userBirthday.replace(/-/g,'/');
     const today = new Date();
-    const birthDate = new Date(userBirthday);
+    const birthDate = new Date(userBirthdayReplace);
     const currentAge = today.getFullYear() - birthDate.getFullYear();
 
     //debugger;
