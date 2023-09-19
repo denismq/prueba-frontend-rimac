@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { calculateAge } from '../helpers/utils';
 import { getPlans, getSelectedPlan } from '../redux/actions/planActions';
 
 const planOptions = [
@@ -29,12 +30,8 @@ const Plans = () => {
     const plan = useSelector((state) => state.plan);
     const {list} = plan;
 
-    const userBirthdayReplace = userBirthday.replace(/-/g,'/');
-    const today = new Date();
-    const birthDate = new Date(userBirthdayReplace);
-    const currentAge = today.getFullYear() - birthDate.getFullYear();
+    const currentAge = calculateAge(userBirthday);
 
-    //debugger;
     const planFilter = list.filter(function (list) {
         return list.age >= currentAge;
     });
