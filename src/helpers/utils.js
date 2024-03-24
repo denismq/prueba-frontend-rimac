@@ -33,3 +33,8 @@ export const getYearsForCreditCard = () => {
   return yearsArray;
 };
 */
+
+/*
+React: decoupling UI and business logic
+https://www.youtube.com/watch?v=NmLIRiphrTE
+*/

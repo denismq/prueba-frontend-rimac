@@ -146,4 +146,8 @@
     pointer-events: none;
     -webkit-transition: 0.2s ease all;
     transition: 0.2s ease all;
+    &.filled {
+        top: 2px;
+        font-size: 12px;
+    }
 }

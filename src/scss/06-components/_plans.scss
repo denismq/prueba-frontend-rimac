@@ -80,6 +80,7 @@
         background-color: $white;
         border-radius: 24px;
         position: relative;
+        cursor: pointer;
         .wrapper-shape{
             display: flex;
             justify-content: end;
@@ -127,11 +128,15 @@
         letter-spacing: 0.2px;
     }
     &__detail{
-        display: flex;
+        //display: flex;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
         gap: 32px;
         @media (max-width: 767px){
-            flex-wrap: wrap;
-            justify-content: center;
+            /*flex-wrap: wrap;
+            justify-content: center;*/
+            grid-template-columns: 1fr;
+            justify-items: center;
         }
     }
 }
@@ -228,14 +233,14 @@
     &__item{
         display: flex;
         margin-bottom: 24px;
+        gap: 10px;
         &::before{
             content: '.';
             width: 7px;
             height: 7px;
-            display: block;
             background-color: $black;
             flex-shrink: 0;
-            margin-right: 10px;
+            //margin-right: 10px;
             border-radius: 50%;
             margin-top: 8px;
         }

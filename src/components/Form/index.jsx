@@ -133,9 +133,15 @@ const Form = () => {
                       <Input
                           type='text'
                           name='document_number'
-                          className={`${isActive ? "is-active" : ""} form-control no-border-radius ${
+                          /*className={`${isActive ? "is-active" : ""} form-control no-border-radius ${
                           errors['document_number'] ? 'is-invalid' : ''
-                          }`}
+                          }`}*/
+                          className={`form-control no-border-radius ${
+                            errors['document_number'] ? 'is-invalid' : ''
+                            }`}
+                          floatingLabel= 'Nro. de documento'
+                          floatingClassName='focus-label'
+                          floatingHasValue='filled'
                           value={value}
                           //onChange={onChange}
                           onChange={(value) => {
@@ -159,7 +165,7 @@ const Form = () => {
                       />
                   )}
                 />
-                <span className="focus-label">Nro. de documento</span>
+                {/*<span className="focus-label">Nro. de documento</span>*/}
                 {errors['document_number'] && <Error>{errors['document_number']?.message}</Error>}               
               </div>
             </div>           
@@ -181,9 +187,16 @@ const Form = () => {
                         <Input
                             type='text'
                             name='cellphone'
-                            className={`${isActive ? "is-active" : ""} form-control ${
+                            /*className={`${isActive ? "is-active" : ""} form-control ${
                             errors['cellphone'] ? 'is-invalid' : ''
-                            }`}
+                            }`}*/
+                            className={`form-control ${
+                              errors['cellphone'] ? 'is-invalid' : ''
+                              }`}
+                            //placeholder={'hola'}
+                            floatingLabel= 'Celular'
+                            floatingClassName='focus-label'
+                            floatingHasValue='filled'
                             value={value}
                             onChange={(value) => {
                               onChange(value);
@@ -204,7 +217,7 @@ const Form = () => {
                         />
                     )}
                 />
-                <span className="focus-label">Celular</span>
+                {/*<span className="focus-label">Celular</span>*/}
                 {errors['cellphone'] && <Error>{errors['cellphone']?.message}</Error>}                 
               </div>
             </div>
